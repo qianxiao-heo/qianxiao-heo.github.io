@@ -243,13 +243,6 @@
   </url>
   
   <url>
-    <loc>https://blog.qiaoxiao.top/tags/51LA/</loc>
-    <lastmod>2023-07-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.qiaoxiao.top/tags/Alogolia/</loc>
     <lastmod>2023-07-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -265,6 +258,13 @@
   
   <url>
     <loc>https://blog.qiaoxiao.top/tags/CentOS/</loc>
+    <lastmod>2023-07-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.qiaoxiao.top/tags/51LA/</loc>
     <lastmod>2023-07-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
