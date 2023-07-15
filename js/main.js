@@ -385,8 +385,16 @@ document.addEventListener("DOMContentLoaded", function () {
       arr.forEach(i => {
         const alt = i.alt ? `alt="${replaceDq(i.alt)}"` : "";
         const title = i.title ? `title="${replaceDq(i.title)}"` : "";
-        str += `<div class="fj-gallery-item"><img src="${i.url}" ${alt + title}"></div>`;
+        const address = i.address ? i.address : "";
+        if (address) {
+          str += `<div class="fj-gallery-item"><div class="tag-address">${address}</div><img src="${i.url}" ${
+            alt + title
+          }"></div>`;
+        } else {
+          str += `<div class="fj-gallery-item"><img src="${i.url}" ${alt + title}"></div>`;
+        }
       });
+
       return str;
     };
 
@@ -398,33 +406,57 @@ document.addEventListener("DOMContentLoaded", function () {
         i.insertAdjacentHTML("beforeend", htmlStr(arr));
         i.classList.remove("lazyload");
       }
+      window.lazyLoadInstance.update();
       return arrLength > loadItem ? loadItem : arrLength;
     };
 
     const fetchUrl = async url => {
+      console.info(url);
       const response = await fetch(url);
       return await response.json();
     };
 
     const runJustifiedGallery = (item, arr) => {
-      if (!item.classList.contains("lazyload")) item.innerHTML = htmlStr(arr);
-      else {
-        const limit = item.getAttribute("data-limit");
-        lazyloadFn(item, arr, limit);
-        const clickBtnFn = () => {
-          const lastItemLength = lazyloadFn(item, arr, limit);
-          fjGallery(
-            item,
-            "appendImages",
-            item.querySelectorAll(`.fj-gallery-item:nth-last-child(-n+${lastItemLength})`)
-          );
-          anzhiyu.loadLightbox(item.querySelectorAll("img"));
-          lastItemLength < limit && item.nextElementSibling.removeEventListener("click", clickBtnFn);
-        };
-        item.nextElementSibling.addEventListener("click", clickBtnFn);
+      const limit = item.getAttribute("data-limit") ?? arr.length;
+      if (!item.classList.contains("lazyload")) {
+        // 不懒加载
+        item.innerHTML = htmlStr(arr);
+      } else {
+        if (!item.classList.contains("btn_album_detail_lazyload")) {
+          // 滚动懒加载
+          lazyloadFn(item, arr, limit);
+          const clickBtnFn = () => {
+            const lastItemLength = lazyloadFn(item, arr, limit);
+            fjGallery(
+              item,
+              "appendImages",
+              item.querySelectorAll(`.fj-gallery-item:nth-last-child(-n+${lastItemLength})`)
+            );
+            anzhiyu.loadLightbox(item.querySelectorAll("img"));
+            lastItemLength < limit && (window.runJustifiedGalleryNextElementSiblingLazyloadFn = null);
+          };
+
+          window.runJustifiedGalleryNextElementSiblingLazyloadFn = clickBtnFn;
+        } else {
+          // 按钮懒加载
+          lazyloadFn(item, arr, limit);
+          // document.querySelector(".gallery .gallery-load-more").style.display = "inline-block";
+          const clickBtnFn = () => {
+            const lastItemLength = lazyloadFn(item, arr, limit);
+            fjGallery(
+              item,
+              "appendImages",
+              item.querySelectorAll(`.fj-gallery-item:nth-last-child(-n+${lastItemLength})`)
+            );
+            lastItemLength < limit && item.nextElementSibling.removeEventListener("click", clickBtnFn);
+          };
+          item.nextElementSibling.addEventListener("click", clickBtnFn);
+        }
       }
+
       anzhiyu.initJustifiedGallery(item);
       anzhiyu.loadLightbox(item.querySelectorAll("img"));
+      window.lazyLoadInstance.update();
     };
 
     const addJustifiedGallery = () => {
@@ -476,14 +508,15 @@ document.addEventListener("DOMContentLoaded", function () {
       const currentTop = window.scrollY || document.documentElement.scrollTop;
       const isDown = scrollDirection(currentTop);
       if (currentTop > 16) {
+        if ($header.classList.contains("nav-visible")) $header.classList.remove("nav-visible");
         if (isDown) {
-          if ($header.classList.contains("nav-visible")) $header.classList.remove("nav-visible");
+          // if ($header.classList.contains("nav-visible"))$header.classList.remove("nav-visible");
           if (isChatBtnShow && isChatShow === true) {
             chatBtnHide();
             isChatShow = false;
           }
         } else {
-          if (!$header.classList.contains("nav-visible")) $header.classList.add("nav-visible");
+          // if (!$header.classList.contains("nav-visible")) $header.classList.add("nav-visible");
           if (isChatBtnHide && isChatShow === false) {
             chatBtnShow();
             isChatShow = true;
@@ -495,6 +528,7 @@ document.addEventListener("DOMContentLoaded", function () {
           $rightside.style.cssText = "opacity: 0.8; transform: translateX(-58px)";
         }
       } else {
+        if (!$header.classList.contains("nav-visible")) $header.classList.add("nav-visible");
         if (currentTop === 0) {
           if (!$header.querySelector(".bili-banner")) {
             $header.classList.remove("nav-fixed");
@@ -1100,6 +1134,19 @@ document.addEventListener("DOMContentLoaded", function () {
           }, 500);
         }
       }
+
+      function runLazyLoad() {
+        const runFn = window.runJustifiedGalleryNextElementSiblingLazyloadFn;
+        if (runFn) {
+          runFn();
+        }
+      }
+
+      // 如果当前为相册详情页
+      const albumDetailGalleryLoadMore = document.getElementById("album_detail_gallery_load_more");
+      if (albumDetailGalleryLoadMore && anzhiyu.isInViewPortOfOne(albumDetailGalleryLoadMore)) {
+        setTimeout(runLazyLoad, 100);
+      }
     }
 
     // 绑定滚动处理函数
@@ -1135,12 +1182,12 @@ document.addEventListener("DOMContentLoaded", function () {
               value = LightenDarkenColor(colorHex(value), -40);
             }
             // 设置转化后的值
-            root.style.setProperty("--anzhiyu-bar-background", value);
+            root.style.setProperty("--yanyu-bar-background", value);
             // 修改顶栏tab bar状态栏
             anzhiyu.initThemeColor();
           } catch (err) {
             // 在这里处理 JSON.parse() 抛出的错误
-            root.style.setProperty("--anzhiyu-bar-background", "var(--anzhiyu-main)");
+            root.style.setProperty("--yanyu-bar-background", "var(--anzhiyu-main)");
             // 修改顶栏tab bar状态栏
             anzhiyu.initThemeColor();
           }
@@ -1148,7 +1195,7 @@ document.addEventListener("DOMContentLoaded", function () {
       };
     } else {
       // 没有获取到文章顶图元素，也就是不在文章页，设置bar meta样式
-      root.style.setProperty("--anzhiyu-bar-background", "var(--anzhiyu-meta-theme-color)");
+      root.style.setProperty("--yanyu-bar-background", "var(--yanyu-meta-theme-color)");
     }
     anzhiyu.initThemeColor();
   };
@@ -1291,7 +1338,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 开发者工具键盘监听
   window.onkeydown = function (e) {
-    123 === e.keyCode && anzhiyu.snackbarShow("开发者模式已打开，请遵循GPL协议", !1);
+    if(123 === e.keyCode){ //&& anzhiyu.snackbarShow("开发者模式已打开，请遵循GPL协议", !1);
+      new Vue({
+        data: function () {
+            this.$notify({
+                title: "你已被发现😜",
+                message: "小伙子，扒源记住要遵循GPL协议！",
+                position: 'top-left',
+                offset: 50,
+                showClose: true,
+                type: "warning",
+                duration: 5000
+            });
+        }
+    })
+    }
   };
 
   const unRefreshFn = function () {
@@ -1328,7 +1389,7 @@ document.addEventListener("DOMContentLoaded", function () {
     GLOBAL_CONFIG.isPhotoFigcaption && addPhotoFigcaption();
     scrollFn();
 
-    const $jgEle = document.querySelectorAll("#article-container .fj-gallery");
+    const $jgEle = document.querySelectorAll("#content-inner .fj-gallery");
     $jgEle.length && runJustifiedGallery($jgEle);
 
     runLightbox();

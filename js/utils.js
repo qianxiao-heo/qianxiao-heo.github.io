@@ -62,7 +62,7 @@ const anzhiyu = {
     const { position, bgLight, bgDark } = GLOBAL_CONFIG.Snackbar;
     const bg = document.documentElement.getAttribute("data-theme") === "light" ? bgLight : bgDark;
     const root = document.querySelector(":root");
-    root.style.setProperty("--anzhiyu-snackbar-time", duration + "ms");
+    root.style.setProperty("--yanyu-snackbar-time", duration + "ms");
 
     Snackbar.show({
       text: text,
@@ -72,41 +72,6 @@ const anzhiyu = {
       pos: position,
       customClass: "snackbar-css",
     });
-  },
-
-  diffDate: (d, more = false) => {
-    const dateNow = new Date();
-    const datePost = new Date(d);
-    const dateDiff = dateNow.getTime() - datePost.getTime();
-    const minute = 1000 * 60;
-    const hour = minute * 60;
-    const day = hour * 24;
-    const month = day * 30;
-
-    let result;
-    if (more) {
-      const monthCount = dateDiff / month;
-      const dayCount = dateDiff / day;
-      const hourCount = dateDiff / hour;
-      const minuteCount = dateDiff / minute;
-
-      if (monthCount > 12) {
-        result = datePost.toLocaleDateString().replace(/\//g, "-");
-      } else if (monthCount >= 1) {
-        result = parseInt(monthCount) + " " + GLOBAL_CONFIG.date_suffix.month;
-      } else if (dayCount >= 1) {
-        result = parseInt(dayCount) + " " + GLOBAL_CONFIG.date_suffix.day;
-      } else if (hourCount >= 1) {
-        result = parseInt(hourCount) + " " + GLOBAL_CONFIG.date_suffix.hour;
-      } else if (minuteCount >= 1) {
-        result = parseInt(minuteCount) + " " + GLOBAL_CONFIG.date_suffix.min;
-      } else {
-        result = GLOBAL_CONFIG.date_suffix.just;
-      }
-    } else {
-      result = parseInt(dateDiff / day);
-    }
-    return result;
   },
 
   loadComment: (dom, callback) => {
@@ -308,7 +273,7 @@ const anzhiyu = {
   //顶栏自适应主题色
   initThemeColor: function () {
     let themeColor = getComputedStyle(document.documentElement)
-      .getPropertyValue("--anzhiyu-bar-background")
+      .getPropertyValue("--yanyu-bar-background")
       .trim()
       .replace('"', "")
       .replace('"', "");
@@ -366,7 +331,20 @@ const anzhiyu = {
     rm.hideRightMenu();
     if (rm.downloadimging == false) {
       rm.downloadimging = true;
-      anzhiyu.snackbarShow("正在下载中，请稍后", false, 10000);
+      //anzhiyu.snackbarShow("正在下载中，请稍后", false, 10000);
+      new Vue({
+        data: function () {
+            this.$notify({
+                title: "图片下载",
+                message: "正在下载中，请稍后...",
+                position: 'top-left',
+                offset: 50,
+                showClose: true,
+                type: "info",
+                duration: 5000
+            });
+          }
+      });
       setTimeout(function () {
         let image = new Image();
         // 解决跨域 Canvas 污染问题
@@ -385,11 +363,37 @@ const anzhiyu = {
           a.dispatchEvent(event); // 触发a的单击事件
         };
         image.src = imgsrc;
-        anzhiyu.snackbarShow("图片已添加盲水印，请遵守版权协议");
+        //anzhiyu.snackbarShow("图片已添加盲水印，请遵守版权协议");
+        new Vue({
+          data: function () {
+              this.$notify({
+                  title: "图片版权",
+                  message: "图片已添加盲水印，请遵守版权协议",
+                  position: 'top-left',
+                  offset: 50,
+                  showClose: true,
+                  type: "info",
+                  duration: 2000
+              });
+            }
+        });
         rm.downloadimging = false;
       }, "10000");
     } else {
-      anzhiyu.snackbarShow("有正在进行中的下载，请稍后再试");
+      //anzhiyu.snackbarShow("有正在进行中的下载，请稍后再试");
+      new Vue({
+        data: function () {
+            this.$notify({
+                title: "图片正在下载",
+                message: "有正在进行中的下载，请稍后再试",
+                position: 'top-left',
+                offset: 50,
+                showClose: true,
+                type: "warning",
+                duration: 2000
+            });
+          }
+      });
     }
   },
   //禁止图片右键单击
@@ -424,7 +428,20 @@ const anzhiyu = {
     if (commentBarrage) {
       if (window.getComputedStyle(commentBarrage).display === "block") {
         commentBarrage.style.display = "none";
-        anzhiyu.snackbarShow("✨ 已关闭评论弹幕");
+        //anzhiyu.snackbarShow("✨ 已关闭评论弹幕");
+        new Vue({
+          data: function () {
+              this.$notify({
+                  title: "关闭弹幕",
+                  message: "✨ 已关闭评论弹幕",
+                  position: 'top-left',
+                  offset: 50,
+                  showClose: true,
+                  type: "success",
+                  duration: 2000
+              });
+            }
+        });
         document.querySelector(".menu-commentBarrage-text").textContent = "显示热评";
         document.querySelector("#consoleCommentBarrage").classList.remove("on");
         localStorage.setItem("commentBarrageSwitch", "false");
@@ -432,7 +449,20 @@ const anzhiyu = {
         commentBarrage.style.display = "block";
         document.querySelector(".menu-commentBarrage-text").textContent = "关闭热评";
         document.querySelector("#consoleCommentBarrage").classList.add("on");
-        anzhiyu.snackbarShow("✨ 已开启评论弹幕");
+        //anzhiyu.snackbarShow("✨ 已开启评论弹幕");
+        new Vue({
+          data: function () {
+              this.$notify({
+                  title: "开启弹幕",
+                  message: "✨ 已开启评论弹幕",
+                  position: 'top-left',
+                  offset: 50,
+                  showClose: true,
+                  type: "success",
+                  duration: 2000
+              });
+            }
+        });
         localStorage.removeItem("commentBarrageSwitch");
       }
     }
@@ -627,7 +657,7 @@ const anzhiyu = {
 
   //获取音乐中的名称
   musicGetName: function () {
-    var x = $(".aplayer-title");
+    var x = document.querySelector(".aplayer-title");
     var arr = [];
     for (var i = x.length - 1; i >= 0; i--) {
       arr[i] = x[i].innerText;
@@ -638,10 +668,12 @@ const anzhiyu = {
   // 检测显示模式
   darkModeStatus: function () {
     let theme = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
-    if (theme == "light") {
-      $(".menu-darkmode-text").text("深色模式");
+    const menuDarkmodeText = document.querySelector(".menu-darkmode-text");
+
+    if (theme === "light") {
+      menuDarkmodeText.textContent = "深色模式";
     } else {
-      $(".menu-darkmode-text").text("浅色模式");
+      menuDarkmodeText.textContent = "浅色模式";
     }
   },
 
@@ -833,7 +865,20 @@ const anzhiyu = {
     });
     anMusicRefreshBtn.addEventListener("click", () => {
       localStorage.removeItem("musicData");
-      anzhiyu.snackbarShow("已移除相关缓存歌曲");
+      //anzhiyu.snackbarShow("已移除相关缓存歌曲");
+      new Vue({
+        data: function () {
+            this.$notify({
+                title: "歌曲缓存清除",
+                message: "✨ 已移除相关缓存歌曲",
+                position: 'top-left',
+                offset: 50,
+                showClose: true,
+                type: "success",
+                duration: 2000
+            });
+          }
+      })
     });
     anMusicSwitchingBtn.addEventListener("click", () => {
       anzhiyu.changeMusicList();
@@ -1019,7 +1064,20 @@ const anzhiyu = {
 
   // 跳转开往
   totraveling: function () {
-    anzhiyu.snackbarShow("即将跳转到「开往」项目的成员博客，不保证跳转网站的安全性和可用性", !1, 5000);
+    //anzhiyu.snackbarShow("即将跳转到「开往」项目的成员博客，不保证跳转网站的安全性和可用性", !1, 5000);
+    new Vue({
+      data: function () {
+          this.$notify({
+              title: "跳转开往",
+              message: "即将跳转到「开往」项目的成员博客，不保证跳转网站的安全性和可用性",
+              position: 'top-left',
+              offset: 50,
+              showClose: true,
+              type: "success",
+              duration: 5000
+          });
+        }
+    });
     setTimeout(function () {
       window.open("https://www.travellings.cn/go.html");
     }, "5000");
@@ -1081,11 +1139,14 @@ const anzhiyu = {
   },
   //添加赞赏蒙版
   addRewardMask: function () {
+    if (!document.querySelector(".reward-main")) return;
     document.querySelector(".reward-main").style.display = "flex";
+    document.querySelector(".reward-main").style.zIndex = "102";
     document.getElementById("quit-box").style.display = "flex";
   },
   // 移除赞赏蒙版
   removeRewardMask: function () {
+    if (!document.querySelector(".reward-main")) return;
     document.querySelector(".reward-main").style.display = "none";
     document.getElementById("quit-box").style.display = "none";
   },
