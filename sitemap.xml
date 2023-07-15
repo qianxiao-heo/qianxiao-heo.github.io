@@ -299,13 +299,6 @@
   </url>
   
   <url>
-    <loc>https://blog.qiaoxiao.top/tags/ThreadLocal/</loc>
-    <lastmod>2023-07-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.qiaoxiao.top/tags/docker/</loc>
     <lastmod>2023-07-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -314,6 +307,13 @@
   
   <url>
     <loc>https://blog.qiaoxiao.top/tags/Mirai/</loc>
+    <lastmod>2023-07-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.qiaoxiao.top/tags/ThreadLocal/</loc>
     <lastmod>2023-07-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
