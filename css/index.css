@@ -6035,6 +6035,7 @@ h1.page-title + .tag-cloud-list {
 #article-container {
   word-wrap: break-word;
   overflow-wrap: break-word;
+  text-align: justify;
 }
 #article-container h1 .post-content,
 #article-container h2 .post-content,
@@ -15195,7 +15196,6 @@ canvas#universe {
 body[data-type="link"] main #page {
   border: 0;
   box-shadow: none !important;
-  padding: 0 !important;
 }
 
 [data-theme="dark"] body[data-type="link"] #page {
@@ -15204,6 +15204,41 @@ body[data-type="link"] main #page {
 
 .flink .anzhiyu-flink-list {
   padding: 0;
+}
+
+.link-explain-description {
+  display: flex;
+  gap: 0.5rem;
+}
+.link-description-left,.link-description-right,.mylink-list {
+  border: var(--style-border);
+  margin: 0.5rem 0.25rem;
+  border-radius: 12px;
+}
+.link-description-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.link-description-right h4{
+  margin: 0;
+}
+.link-description-right p{
+  margin: 0 !important;
+  padding: 10px 0;
+  font-family: about-title;
+  font-size: 20px;
+}
+@media (min-width:1280px) {
+  .link-description-right {
+    width: 45%;
+  }
+}
+@media (max-width:1280px) {
+  .link-explain-description {
+    flex-direction: column;
+}
 }
 
 /* 修复时间轴wowjs超出盒子 */
