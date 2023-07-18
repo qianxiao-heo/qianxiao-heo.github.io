@@ -5641,7 +5641,8 @@ h1.page-title + .tag-cloud-list {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  padding: 0 calc((100% - 1370px) / 2);
+  padding-inline: var(--edge-lr);
+  margin-inline: auto;
   width: 100%;
   height: 60px;
   font-size: 1.3em;
@@ -16922,12 +16923,8 @@ div#menus {
   justify-content: start;
   align-items: flex-start;
   width: 100%;
-  /* position: absolute; */
   height: 60px;
-  /* left: 0; */
   margin: 0 auto;
-  /* z-index: 2; */
-  padding: 0 calc((100% - 1370px) / 2);
   transition: 0.3s;
 }
 
