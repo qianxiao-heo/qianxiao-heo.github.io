@@ -15230,6 +15230,7 @@ body[data-type="link"] main #page {
   padding: 10px 0;
   font-family: about-title;
   font-size: 20px;
+  text-align: center;
 }
 @media (min-width:1280px) {
   .link-description-right {
@@ -17026,6 +17027,7 @@ ul.menus_item_child {
   box-shadow: none;
   font-weight: bold;
   border-radius: 100px;
+  justify-content: center;
 }
 #page-header.nav-fixed #nav #page-name:hover {
   color: var(--yanyu-main);
