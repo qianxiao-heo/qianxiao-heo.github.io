@@ -15314,10 +15314,18 @@ body[data-type="link"] main #page {
     width: 50%;
   }
 }
-@media (max-width:1280px) {
+@media (max-width:1024px) {
+  .link-description-right{
+   width: 50%;
+  }
+}
+@media (max-width:768px) {
   .link-explain-description {
     flex-direction: column;
-}
+  }
+  .link-description-right,.link-description-left{
+    width: 100%;
+  }
 }
 
 /* 修复时间轴wowjs超出盒子 */
