@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:description" content="风起星辰跳转提醒页">
+	<link rel="shortcut icon" href="https://cdn-oss.qiaoxiao.top/blog/img/logo.png">
+	<link rel="preconnect" href="https://s1.hdslb.com/">
+	<link rel="stylesheet" href="//s1.hdslb.com/bfs/static/jinkela/long/font/regular.css" media="all" onload="this.media='all'">
+	<link rel="stylesheet" href="//s1.hdslb.com/bfs/static/jinkela/long/font/medium.css" media="all" onload="this.media='all'">
+	<title>跳转提示</title>
+	<style>
+		body {font-family: HarmonyOS_Regular ;margin: 0;height: 100vh;background: url(https://cdn-oss.qiaoxiao.top/2023/04/08/643172390fdf5.jpeg) center / cover;}
+		.go-content {box-shadow: 8px 8px 20px 0 rgba(55,99,170,.1), -8px -8px 20px 0 #fff;background-image: linear-gradient(0deg,#fff,#f3f5f8);position: absolute;left: 50%;top: 30%;max-width: 624px;width: 86%;background-color: #fff;transform: translateX(-50%);padding: 30px 40px 0;box-sizing: border-box;border: 1px solid #e5e6eb;border-radius: 2px;}
+		.go-top {display: flex;flex-direction: column;justify-content: center;align-items: center;vertical-align: middle;}
+		h1 {font-size: 20px;margin-bottom: 10px;}
+		p {font-size: 16px;margin-bottom: 20px;}
+		.go-bd {display: flex;align-items: center;width: 320px;margin: 0 auto 12px;padding: 10px;border-radius: 4px;background: #ebf6ff;border: 1px solid #dceaf5;zoom: 1;}
+		.go-bd__icon {flex-shrink: 0;display: flex;align-items: center;width: 40px;justify-content: center;height: 40px;line-height: 40px;font-size: 20px;background: #bcc6d8;text-align: center;border-radius: 2px;}
+		#external-link{color: rgb( 238 77 80 / .7);margin-left: 10px;max-width: 270px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap}
+		.go {display: flex;justify-content: center;align-items: center;vertical-align: middle;margin-bottom: 1rem;}
+		button {margin-right:1rem ;padding: 10px 20px;font-size: 16px;background-color: #007bff;color: #fff;border: none;cursor: pointer;border-radius: 8px;}
+	</style>
+</head>
+<body>
+	<div class="go-content">
+		<div class="go-top">
+			<h1>即将离开本站，请注意账号财产安全</h1>
+			<p>您即将离开本站，是否继续前往以下外部链接？</p>
+			<div class="go-bd">
+				<div class="go-bd__icon">
+					<svg t="1585116627498" class="icon" viewBox="0 0 1024 1024" version="1.1"
+						xmlns="http://www.w3.org/2000/svg" p-id="2855" width="32" height="32">
+						<path
+							d="M580.906667 682.496a8.96 8.96 0 0 0-12.501334 0l-129.109333 129.152c-59.818667 59.818667-160.682667 66.133333-226.688 0-66.133333-66.133333-59.733333-166.912 0-226.688l129.109333-129.152a8.917333 8.917333 0 0 0 0-12.544L297.514667 399.061333a8.917333 8.917333 0 0 0-12.544 0l-129.152 129.066667a240.256 240.256 0 0 0 0 340.053333 240.213333 240.213333 0 0 0 340.053333 0l129.066667-129.109333a8.917333 8.917333 0 0 0 0-12.586667l-43.989334-43.989333h-0.042666zM868.224 155.733333a240.554667 240.554667 0 0 1 0 340.138667l-129.109333 129.152a8.917333 8.917333 0 0 1-12.544 0l-44.202667-44.202667a8.96 8.96 0 0 1 0-12.629333l129.109333-129.066667c59.818667-59.818667 66.133333-160.597333 0-226.730666-66.005333-66.133333-166.869333-59.818667-226.688 0l-129.066666 129.194666a8.96 8.96 0 0 1-12.544 0L399.061333 297.514667a8.96 8.96 0 0 1 0-12.544l129.237334-129.152a240.213333 240.213333 0 0 1 339.925333 0v-0.042667z m-247.210667 201.045334l43.946667 43.989333a8.917333 8.917333 0 0 1 0 12.544l-251.562667 251.562667a8.917333 8.917333 0 0 1-12.544 0l-44.032-43.946667a8.917333 8.917333 0 0 1 0-12.544l251.690667-251.605333a8.96 8.96 0 0 1 12.544 0h-0.042667z"
+							fill="#006CBE" fill-opacity=".87" p-id="2856"></path>
+					</svg>
+				</div>
+				<div id="external-link"></div>
+			</div>
+		</div>
+		<div class="go">
+			<button onclick="backToHome()">返回首页</button>
+			<button onclick="continueToExternalLink()">继续前往</button>
+		</div>
+	</div>
+	<script>
+		function getTargetUrl(){
+			let targetUrl = sessionStorage.getItem('externalLink');
+			if (targetUrl == null) {
+				let currentUrl = window.location.search;
+				let searchParams = new URLSearchParams(currentUrl);
+				let targetParam = searchParams.get('target');
+				targetUrl = decodeURIComponent(targetParam);
+			}
+			return targetUrl;
+		}
+		window.addEventListener('DOMContentLoaded', function(a) {
+			let domTargetUrl=getTargetUrl();
+    		document.getElementById('external-link').textContent = domTargetUrl;
+		});
+		function continueToExternalLink() {
+			let toTargetUrl=getTargetUrl();
+    		window.open(toTargetUrl);
+    		window.close()
+		}
+		function backToHome() {
+    		window.open("https://"+window.location.hostname);
+    		window.close()
+		}
+	</script>
+</body>
+</html>
