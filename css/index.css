@@ -3439,6 +3439,11 @@ body[data-type="link"] #page .page-title {
   -webkit-box-shadow: var(--yanyu-shadow-yellow);
   box-shadow: var(--yanyu-shadow-yellow);
 }
+.site-card-tag.blue {
+  background: #2f90b9;
+  -webkit-box-shadow: var(--box-shadow);
+  box-shadow: var(--box-shadow);
+}
 .site-card-tag.other {
   background: var(--color-link);
   -webkit-box-shadow: var(--box-shadow);
