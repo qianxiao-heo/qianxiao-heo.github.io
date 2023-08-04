@@ -22754,6 +22754,11 @@ section.top-area {
   animation-delay: .3s;
   -webkit-mask: linear-gradient(#000 30%,rgb(0 0 0 / .5));
 }
+@font-face {
+  font-family: welcome;
+  src: url(https://unpkg.com/yanyutheme-fonts@1.0.1/YouSheBiaoTiHei.woff2) format('woff2');
+  font-display: swap;
+}
 .text-effect {
   animation-name: opacity;
   animation-fill-mode: backwards;
@@ -22851,7 +22856,6 @@ section.top-area {
     text-align: center;
   }
   .welcome-word .greets {
-    /* position: absolute; */
     top: -1rem;
     width: 100%;
     line-height: 1;
@@ -22864,7 +22868,7 @@ section.top-area {
     transition: 1s;
   }
   .rand-post li {
-    --width: .9rem;
+    --width: 1.25rem;
     position: absolute;
     justify-content: center;
     left: 0;
@@ -22891,8 +22895,30 @@ section.top-area {
   .rand-post li:hover .star {
 		scale: 2;
 	}
+  .rand-post li .post{
+    position: absolute;
+    pointer-events: none;
+    padding: 0.5rem;
+    z-index: 2;
+    line-height: 1;
+    max-width: 40vw;
+    opacity: 0;
+    border-radius: 1.25rem;
+    border: 2px dotted var(--sun-color);
+    -webkit-backdrop-filter: saturate(1.8) blur(20px);
+    backdrop-filter: saturate(1.8) blur(20px);
+    transition: all .5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  }
+  .rand-post li:hover > .star + .post {
+		opacity: 1;
+		transform: translateY(-2.5rem);
+	}
 }
 @media (max-width: 1024px) {
+  section.top-area {
+		left: auto;
+		width: 50%;
+	}
   .rand-post {
 		margin: 1rem -1rem -2rem;
 		padding: 1rem 1rem 2rem;
@@ -22911,15 +22937,36 @@ section.top-area {
 		display: flex;
 		flex-wrap: nowrap;
 		gap: 1rem;
-		overflow: overlay;
+		overflow: hidden;
 		scroll-snap-type: x mandatory;
 		scroll-snap-stop: always;
 		scroll-padding: var(--gap-divs);
+	}
+  .rand-post li .post {
+		padding: 0;
+		background: none;
+		box-shadow: none;
 	}
 }
 .rand-post ul {
   list-style: none;
   margin: 0;
+}
+.rand-post li .post{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: var(--s-bg,rgb(255 255 255 / .5));
+  box-shadow: var(--box-shadow-white);
+}
+.rand-post li span {
+  font-size: var(--font-size-medium);
+  color: rgb( var(--color-rgb));
+  background: var(--s-bg,rgb(0 0 0 / 2.5%));
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  border-radius: .5em;
+  vertical-align: middle;
 }
 @keyframes sun-scale {
 	0% {transform: scale(100);}
