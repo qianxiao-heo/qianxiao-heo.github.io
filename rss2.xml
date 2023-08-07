@@ -15,8 +15,35 @@
     <atom:link href="https://blog.qiaoxiao.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>行远自迩，登高自卑</description>
-    <pubDate>Mon, 24 Jul 2023 03:00:22 GMT</pubDate>
+    <pubDate>Mon, 07 Aug 2023 11:25:15 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Redis基础（笔记一）</title>
+      <link>https://blog.qiaoxiao.top/posts/d96330b44608.html</link>
+      <guid>https://blog.qiaoxiao.top/posts/d96330b44608.html</guid>
+      <pubDate>Mon, 07 Aug 2023 10:05:13 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h3 id=&quot;什么是Redis？&quot;&gt;&lt;a href=&quot;#什么是Redis？&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.qiaoxiao.top/categories/java/">java</category>
+      
+      
+      <category domain="https://blog.qiaoxiao.top/tags/Redis/">Redis</category>
+      
+      
+      <comments>https://blog.qiaoxiao.top/posts/d96330b44608.html#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>Hexo文件下载标签外挂</title>

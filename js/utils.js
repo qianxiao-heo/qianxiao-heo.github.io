@@ -573,7 +573,7 @@ const anzhiyu = {
         t
       );
     };
-    $sayhiEl && ($sayhiEl.innerHTML = getTimeState() + "！我是");
+    $sayhiEl && ($sayhiEl.innerHTML = getTimeState());
   },
   // 友链注入预设评论
   addFriendLink() {
