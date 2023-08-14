@@ -21,8 +21,6 @@ function getTwikooComments(){
       }).then(function (res) {
         console.log("\n %c Comments Successful：","background: #409EFF;color: rgb(255,255,255);border-radius:5px 0 0 5px;padding:5px 0 5px 10px;",btoa(res));
         let comments = document.getElementById('twikoo-comments-list');
-        let homeCounts = document.getElementById('home-comment-count');
-        homeCounts.innerText = res.length;
         for(let i =0 ; i < res.length; i++){
             let a = document.createElement('a');
             a.setAttribute('class', 'comments-box');

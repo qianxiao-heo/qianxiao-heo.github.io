@@ -15,8 +15,90 @@
     <atom:link href="https://blog.qiaoxiao.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>行远自迩，登高自卑</description>
-    <pubDate>Mon, 07 Aug 2023 11:25:15 GMT</pubDate>
+    <pubDate>Sun, 13 Aug 2023 05:46:59 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>键入网址到网页显示过程</title>
+      <link>https://blog.qiaoxiao.top/posts/fa8751623ed3.html</link>
+      <guid>https://blog.qiaoxiao.top/posts/fa8751623ed3.html</guid>
+      <pubDate>Thu, 10 Aug 2023 13:48:17 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h3 id=&quot;HTTP&quot;&gt;&lt;a href=&quot;#HTTP&quot; class=&quot;headerlink&quot; title=&quot;HTTP&quot;&gt;&lt;/a&gt;HTTP&lt;/h3&gt;&lt;p&gt;&lt;img</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.qiaoxiao.top/categories/%E7%BD%91%E7%BB%9C/">网络</category>
+      
+      
+      <category domain="https://blog.qiaoxiao.top/tags/TCP-IP/">TCP/IP</category>
+      
+      
+      <comments>https://blog.qiaoxiao.top/posts/fa8751623ed3.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Redis持久化-RDB快照</title>
+      <link>https://blog.qiaoxiao.top/posts/90b5d2a4ea88.html</link>
+      <guid>https://blog.qiaoxiao.top/posts/90b5d2a4ea88.html</guid>
+      <pubDate>Wed, 09 Aug 2023 11:05:50 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.qiaoxiao.top/categories/java/">java</category>
+      
+      
+      <category domain="https://blog.qiaoxiao.top/tags/Redis/">Redis</category>
+      
+      
+      <comments>https://blog.qiaoxiao.top/posts/90b5d2a4ea88.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Redis持久化-AOF日志</title>
+      <link>https://blog.qiaoxiao.top/posts/16c43aaf84db.html</link>
+      <guid>https://blog.qiaoxiao.top/posts/16c43aaf84db.html</guid>
+      <pubDate>Tue, 08 Aug 2023 14:20:24 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h3 id=&quot;Redis持久化&quot;&gt;&lt;a href=&quot;#Redis持久化&quot; class=&quot;headerlink&quot; title=&quot;Redis持久化&quot;&gt;&lt;/a&gt;Redis持久化&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;Redis 的读写操作都是在内存中，所以 Redis</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.qiaoxiao.top/categories/java/">java</category>
+      
+      
+      <category domain="https://blog.qiaoxiao.top/tags/Redis/">Redis</category>
+      
+      
+      <comments>https://blog.qiaoxiao.top/posts/16c43aaf84db.html#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>Redis基础（笔记一）</title>

@@ -1,35 +1,49 @@
 function get51LAData(){
-    fetch("https://v6-widget.51.la/v6/K2Eb7ZLEqGqG2GRB/quote.js").then(res=> res.text()).then(data=>{
-      let num = data.match(/(<\/span><span>).*?(\/span><\/p>)/g);
-      num = num.map(el => {
-        let val = el.replace(/(<\/span><span>)/g, "");
-        let str = val.replace(/(<\/span><\/p>)/g, "");
-        return str;
-      });
-      let now = document.getElementById('home-now-fw');
-      let yesterday = document.getElementById('home-yesterday-fw');
-      let month = document.getElementById('home-month-fw');
-      now.innerText= num[2];
-      yesterday.innerText = num[4]; 
-      month.innerText = num[5];
-      let totality = num[6];//总访问数
-      let paddedNumber=totality.padStart(9,"0");//补位
-      let hotnum = document.getElementById('hotnum');
-      let iCount= hotnum.querySelectorAll("#hotnum i");
-      if(iCount.length >= 9){
-        for(let i = 0;i < iCount.length; i++){
-          iCount[i].remove();
-        }
+    fetch('https://v6-widget.51.la/v6/K2Eb7ZLEqGqG2GRB/quote.js').then(res => res.text()).then((data) => {
+      let title = ['最近活跃访客', '今日人数', '今日访问', '昨日人数', '昨日访问', '本月访问', '总访问量']
+      let num = data.match(/(?<=<\/span><span>).*?(?=<\/span><\/p>)/g)
+      let order = [2, 4, 5]
+      for (let i = 0; i < order.length; i++) { 
+        document.querySelectorAll('.web')[0].innerHTML += '<li><h6>' + title[order[i]] + '</h6><em class="num" title="访问人数">' + num[order[i]] + '</em></li>'
       }
-      for (let i = 0; i < paddedNumber.length; i++) {
-        let digit = paddedNumber.charAt(i);
-        let iTag = document.createElement("i");
-        iTag.classList.add("text-effect");
-        iTag.innerText = digit;
-        hotnum.appendChild(iTag);
-      }     
-    }).catch(error=>{
-      console.log("51LA Error",error)
+    });
+    twikoo.getRecentComments({
+      accessToken: '7398c1659496edf1e83fbee4217a4664',
+      envId: 'https://twikoo.qiaoxiao.top',
+      pageSize: 10,
+      includeReply: false
+    }).then(function (res) {
+      let homeCounts = document.getElementById('home-comment-count');
+      homeCounts.innerText = res.length;
+    }).catch(function (err) {
+      console.log("\n %c Comments Fail","color:red",err);
     })
-}
-get51LAData()
+};
+get51LAData();
+
+function createTextEffect(elementSelector, textClass, animationDuration, animationDelay) {
+  const textElement = document.querySelector(elementSelector);
+  const textContent = textElement.textContent;
+  const characters = textContent.split('');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        textElement.innerHTML = '';
+        for (let i = 0; i < characters.length; i++) {
+          const character = characters[i];
+          const characterElement = document.createElement('i');
+          const characterTextNode = document.createTextNode(character);
+          characterElement.appendChild(characterTextNode);
+          characterElement.classList.add(textClass);
+          characterElement.style.animationDuration = animationDuration;
+          characterElement.style.animationDelay = `${i * animationDelay}s`;
+          textElement.appendChild(characterElement);
+        }
+        observer.disconnect();
+      }
+    });
+  });
+  observer.observe(textElement);
+};
+createTextEffect('#thanks', 'text-effect', '1s', 0.1);
+createTextEffect('#hotnum', 'text-effect', '1s', 0.1);
