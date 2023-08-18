@@ -2677,167 +2677,177 @@ figure.highlight pre .javascript .function {
   margin: 6px 0;
   padding: 0.12em 0.4em 0.12em 1.4em;
 }
-.collect h2 {
-  margin-bottom: 0;
-}
-.collect .collect-desc {
-  margin-bottom: 10px;
-}
-.collect .collect-list {
+.article-list {
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: box;
   display: flex;
-  gap: 18px;
-  -webkit-box-lines: multiple;
-  -moz-box-lines: multiple;
-  -o-box-lines: multiple;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-.collect .collect-list .collect_box {
-  --w: calc(100% / 6 - 15px);
-  width: var(--w);
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: box;
-  display: flex;
-  -webkit-box-pack: justify;
-  -moz-box-pack: justify;
-  -o-box-pack: justify;
-  -ms-flex-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  -webkit-box-orient: vertical;
-  -moz-box-orient: vertical;
-  -o-box-orient: vertical;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  background-position: center;
-  background-size: cover;
-  border-radius: 12px;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -o-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   position: relative;
-  overflow: hidden;
-  padding: 10px;
-  color: #fff;
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -o-transition: 0.5s;
-  -ms-transition: 0.5s;
-  transition: 0.5s;
 }
-.collect .collect-list .collect_box::after {
-  content: '';
-  position: absolute;
-  height: 100%;
+.article-list .content_book_list {
+  padding: 20px 0 !important;
+  border-radius: 0;
+  border: solid rgba(255,255,255,0.05);
+  border-width: 1px 0 0;
   width: 100%;
-  left: 0;
-  top: 0;
-  background: rgba(0,0,0,0.3);
-  z-index: 0;
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -o-transition: 0.5s;
-  -ms-transition: 0.5s;
-  transition: 0.5s;
 }
-.collect .collect-list .collect_box:hover {
-  -webkit-transform: translateY(-10px);
-  -moz-transform: translateY(-10px);
-  -o-transform: translateY(-10px);
-  -ms-transform: translateY(-10px);
-  transform: translateY(-10px);
+.article-list .content_book_list .yanyu_book_item {
+  list-style: none;
+  position: relative;
+  background: rgba(52,167,255,0.07);
+  border-radius: 0.5rem;
+  margin-bottom: 0.8rem !important;
 }
-.collect .collect-list .collect_box:hover::after {
-  background: rgba(0,0,0,0.1);
+.article-list .content_book_list .yanyu_book_item .yanyu_book_item_link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+  cursor: pointer;
 }
-.collect .collect-list .collect_box .collect_top {
+.article-list .content_book_list .yanyu_book_item .yanyu_bookList_item_container {
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: box;
   display: flex;
-  z-index: 1;
   -webkit-box-align: center;
   -moz-box-align: center;
   -o-box-align: center;
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  -webkit-box-pack: justify;
-  -moz-box-pack: justify;
-  -o-box-pack: justify;
-  -ms-flex-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-}
-.collect .collect-list .collect_box .collect_content {
-  z-index: 1;
-  margin-top: 86%;
-}
-.collect .collect-list .collect_box .collect_content span {
-  display: block;
-  font-size: 18px;
-  font-weight: bold;
-  white-space: nowrap;
+  padding: 20px 0;
   overflow: hidden;
+}
+.article-list .content_book_list .yanyu_book_item .yanyu_bookList_item_container .yanyu_bookList_item_index {
+  -webkit-flex-shrink: 0;
+  flex-shrink: 0;
+  width: 76px;
+  font-size: 20px;
+  text-align: center;
+  color: #b2b4b8;
+}
+.article-list .content_book_list .yanyu_book_item .yanyu_bookList_item_container .yanyu_bookList_item_cover {
+  display: block;
+  -webkit-box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  background: #d8d8d8;
+  position: relative;
+  -webkit-flex-shrink: 0;
+  flex-shrink: 0;
+  width: 108px;
+  height: 156px;
+}
+.article-list .content_book_list .yanyu_book_item .yanyu_bookList_item_container .yanyu_bookList_item_cover .yanyu_bookCover_img {
+  vertical-align: top;
+  width: 100%;
+  height: 100%;
+  background-color: #d8d8d8;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-radius: 0 !important;
+}
+.article-list .content_book_list .yanyu_book_item .yanyu_bookList_item_container .yanyu_bookList_item_info {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -o-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 0 32px;
+}
+.article-list .content_book_list .yanyu_book_item .yanyu_bookList_item_container .yanyu_bookList_item_info .yanyu_bookList_item_title {
+  padding-right: 90px;
+  font-size: 18px;
+  font-family: "SourceHanSerifCN-Bold", PingFang SC, -apple-system, SF UI Text, Lucida Grande, STheiti, Microsoft YaHei, sans-serif;
+  line-height: 26px;
+  overflow: hidden;
+  height: 52px;
+  display: -webkit-box;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  -webkit-text-size-adjust: none;
+  height: auto;
+  max-height: 52px;
 }
-[data-theme='dark'] .collect .collect-list .collect_box {
-  color: #ddd !important;
+.article-list .content_book_list .yanyu_book_item .yanyu_bookList_item_container .yanyu_bookList_item_info .yanyu_bookList_item_author {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 21px;
+  overflow: hidden;
+  height: 21px;
+  display: -webkit-box;
+  display: -moz-box;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  -webkit-text-size-adjust: none;
+  height: auto;
+  max-height: 21px;
 }
-[data-theme='dark'] .collect .collect-list .collect_box:hover {
-  -webkit-transform: translateY(-10px);
-  -moz-transform: translateY(-10px);
-  -o-transform: translateY(-10px);
-  -ms-transform: translateY(-10px);
-  transform: translateY(-10px);
+.article-list .content_book_list .yanyu_book_item .yanyu_bookList_item_container .yanyu_bookList_item_info .yanyu_bookList_item_reading {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  margin-top: 8px;
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  word-wrap: normal;
 }
-[data-theme='dark'] .collect .collect-list .collect_box:hover::after {
-  background: rgba(0,0,0,0.2);
+.article-list .content_book_list .yanyu_book_item .yanyu_bookList_item_container .yanyu_bookList_item_info .yanyu_bookList_item_reading .yanyu_bookList_item_readingText {
+  font-size: 14px;
 }
-[data-theme='dark'] .collect .collect-list .collect_box::after {
-  background: rgba(0,0,0,0.5);
+.article-list .content_book_list .yanyu_book_item .yanyu_bookList_item_container .yanyu_bookList_item_info .yanyu_bookList_item_reading .yanyu_bookList_item_readingText .yanyu_bookList_item_reading_percent {
+  font-style: normal;
+  font-size: 15px;
 }
-@media screen and (max-width: 1100px) {
-  .collect .collect-list {
-    gap: 15px;
-  }
-  .collect .collect-list .collect_box {
-    --w: calc(20% - 12px);
-  }
+.article-list .content_book_list .yanyu_book_item .yanyu_bookList_item_container .yanyu_bookList_item_info .yanyu_bookList_item_reading .book_rating_item {
+  height: 22px;
+  margin: 0 !important;
+  margin-left: 8px !important;
 }
-@media screen and (max-width: 900px) {
-  .collect .collect-list {
-    gap: 16px;
-  }
-  .collect .collect-list .collect_box {
-    --w: calc(25% - 12px);
-  }
-}
-@media screen and (max-width: 768px) {
-  .collect .collect-list {
-    gap: 15px;
-  }
-  .collect .collect-list .collect_box {
-    --w: calc(100% / 3 - 10px);
-  }
-}
-@media screen and (max-width: 500px) {
-  .collect .collect-list {
-    gap: 16px;
-  }
-  .collect .collect-list .collect_box {
-    --w: calc(50% - 8px);
-  }
+.article-list .content_book_list .yanyu_book_item .yanyu_bookList_item_container .yanyu_bookList_item_info .yanyu_bookList_item_desc {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #8a8c90;
+  line-height: 22px;
+  overflow: hidden;
+  height: 44px;
+  display: -webkit-box;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  -webkit-text-size-adjust: none;
+  height: auto;
+  max-height: 44px;
 }
 #body-wrap {
   display: -webkit-box;
@@ -3306,7 +3316,6 @@ body[data-type="link"] #page .page-title {
   height: 100%;
   overflow: hidden;
   border-radius: 3px;
-  background-color: rgba(255,255,255,0.7);
   -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
   -moz-transition: -moz-transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
   -o-transition: -o-transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
@@ -3316,11 +3325,11 @@ body[data-type="link"] #page .page-title {
 .flexcard-flink-list > a .info img {
   position: relative;
   top: 45px;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 50% !important;
-  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0 0 0 1px #7d49d4;
+  box-shadow: 0 0 0 1px #7d49d4;
   z-index: 1;
   text-align: center;
   pointer-events: none;
@@ -3330,14 +3339,12 @@ body[data-type="link"] #page .page-title {
   font-size: 16px;
   width: 100%;
   text-align: center;
-  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  background-color: rgba(255,255,255,0.7);
-  color: var(--font-color);
+  color: #fff;
   white-space: nowrap;
   overflow: hidden;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
+  z-index: 3;
 }
 .flexcard-flink-list > a .desc {
   display: -webkit-box;
@@ -3388,10 +3395,6 @@ body[data-type="link"] #page .page-title {
   .flexcard-flink-list > a {
     width: calc(100% - 15px);
   }
-}
-[data-theme=dark] .flexcard-flink-list a .info,
-[data-theme=dark] .flexcard-flink-list a .info span {
-  background-color: rgba(0,0,0,0.6);
 }
 [data-theme=dark] .flexcard-flink-list > a:hover:before {
   background-color: rgba(18,18,18,0.8);
@@ -3462,8 +3465,12 @@ body[data-type="link"] #page .page-title {
   -webkit-box-shadow: var(--box-shadow);
   box-shadow: var(--box-shadow);
 }
-.site-card-tag.other {
-  background: var(--color-link);
+.site-card-tag.optimal {
+  background: -webkit-linear-gradient(left, #1a2a6c, #b21f1f, #fdbb2d);
+  background: -moz-linear-gradient(left, #1a2a6c, #b21f1f, #fdbb2d);
+  background: -o-linear-gradient(left, #1a2a6c, #b21f1f, #fdbb2d);
+  background: -ms-linear-gradient(left, #1a2a6c, #b21f1f, #fdbb2d);
+  background: linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d);
   -webkit-box-shadow: var(--box-shadow);
   box-shadow: var(--box-shadow);
 }
@@ -13283,7 +13290,7 @@ details .content > *:nth-child(1) {
   --yanyu-red: #ff3842;
   --yanyu-pink: #ff7c7c;
   --yanyu-green: #57bd6a;
-  --yanyu-fontcolor: #f7f7fa;
+  --yanyu-fontcolor: #ffffff;
   --yanyu-background: #18171d;
   --yanyu-reverse: #fff;
   --yanyu-maskbg: rgba(0, 0, 0, 0.6);
@@ -23348,6 +23355,147 @@ time {
 @keyframes numbg-reverse {
 	0% {background-position: 50% 100%;}
 	100% {background-position: -100% 100%;}
+}
+/* Link CSS */
+.flexcard-flink-list>a #vip::before{
+  content: "";
+  background-image: url(https://www.qiaoxiao.top/static/images/purple-line.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 8px;
+}
+.flexcard-flink-list>a #svip::before{
+  content: "";
+  background-image: url(https://www.qiaoxiao.top/static/images/svip.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 8px;
+}
+.flexcard-flink-list>a #common::before{
+  content: "";
+  background-image: url(https://www.qiaoxiao.top/static/images/common.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 8px;
+}
+.flexcard-flink-list > a .info .flink-item-img {
+  width: 115px;
+  height: 80px;
+  border-style: none;
+  border-radius: unset !important;
+  box-shadow: none;
+}
+.flexcard-flink-list > a .info .flink-item-bg {
+  position: absolute;
+  z-index: 2;
+  right: 0px;
+  top: -44px;
+  background: none !important;
+}
+.flexcard-flink-list > a #vip{
+  background:linear-gradient(317deg, #a14fd2, #8888fc 30%, #c6bcff)
+}
+.flexcard-flink-list > a #svip{
+  background:linear-gradient(25deg, #000000 10%, #383838 70%, #000000 100%)
+}
+.flexcard-flink-list > a #common{
+  background:linear-gradient(335deg, #1b8fda 10%, #6fc7e5 70%, #8bc8ef 100%)
+}
+.desc span.description {
+  color: white;
+}
+@media(max-width: 1120px) {
+  .yanyu_bookList_item_container {
+      padding-right:40px
+  }
+}
+@media(max-width: 960px) {
+  .yanyu_bookList_item_container {
+      padding-right:30px
+  }
+}
+@media(max-width: 460px) {
+  .yanyu_bookList_item_container {
+      padding:12px 20px 12px 0 !important
+  }
+}
+@media(max-width: 460px) {
+  .yanyu_bookList_item_index {
+      width:48px !important;
+      font-size: 16px !important
+  }
+}
+@media(max-width: 460px) {
+  .yanyu_bookList_item_cover {
+      width:64px!important;
+      height: 93px!important
+  }
+}
+@media(max-width: 460px) {
+  .yanyu_bookList_item_title {
+      padding-right:0 !important;
+      font-size: 17px !important;
+      line-height: 26px !important;
+      overflow: hidden !important;
+      height: 26px !important;
+      display: -webkit-box !important;
+      display: -moz-box !important;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 1;
+      -moz-line-clamp: 1;
+      line-clamp: 1;
+      -webkit-box-orient: vertical;
+      -webkit-text-size-adjust: none;
+      box-orient: vertical;
+      height: auto !important;
+      max-height: 26px !important
+  }
+}
+@media(max-width: 460px) {
+  .yanyu_bookList_item_author {
+      margin-top:6px !important
+  }
+  .yanyu_bookList_item_reading {
+    margin-top:6px !important;
+}
+}
+@media(max-width: 460px) {
+  .yanyu_bookList_item_readingText {
+      font-size:11px !important
+  }
+}
+@media(max-width: 460px) {
+  .yanyu_bookList_item_reading_percent {
+      font-size:12px
+  }
+}
+@media(max-width: 460px) {
+  .yanyu_bookList_item_desc {
+      display:none !important
+  }
+}
+@font-face {
+  font-family: TSans;
+  src: url(https://mp-7506d438-9d56-4a17-a7c2-7d06b4402586.cdn.bspapp.com/fonts/TSans-W7.woff) format('woff');
+  font-display: swap;
+}
+.yanyu_bookList_item_reading_percent,.yanyu_bookList_item_index{
+  font-family: TSans;
+}
+body[data-type="collect"] .layout #page{
+  padding-top: 0;
 }
 @charset "utf-8";
 

@@ -15,8 +15,68 @@
     <atom:link href="https://blog.qiaoxiao.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>行远自迩，登高自卑</description>
-    <pubDate>Sun, 13 Aug 2023 05:46:59 GMT</pubDate>
+    <pubDate>Fri, 18 Aug 2023 11:03:54 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Jvm垃圾回收机制</title>
+      <link>https://blog.qiaoxiao.top/posts/3488d422a239.html</link>
+      <guid>https://blog.qiaoxiao.top/posts/3488d422a239.html</guid>
+      <pubDate>Fri, 18 Aug 2023 07:51:21 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Java有一堵由内存动态分配和垃圾收集技术所围成的“高墙”，墙外面的人想进去，墙里面的人却想出来。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.qiaoxiao.top/categories/java/">java</category>
+      
+      
+      <category domain="https://blog.qiaoxiao.top/tags/Jvm/">Jvm</category>
+      
+      <category domain="https://blog.qiaoxiao.top/tags/GC/"> GC</category>
+      
+      
+      <comments>https://blog.qiaoxiao.top/posts/3488d422a239.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>logstash-7.17.12启动失败解决方法</title>
+      <link>https://blog.qiaoxiao.top/posts/61e754df14c5.html</link>
+      <guid>https://blog.qiaoxiao.top/posts/61e754df14c5.html</guid>
+      <pubDate>Wed, 16 Aug 2023 14:27:40 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h3 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h3&gt;&lt;p&gt;Logstach使用启动命令：&lt;/p&gt;
+&lt;figure class=&quot;highlight</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.qiaoxiao.top/categories/java/">java</category>
+      
+      
+      <category domain="https://blog.qiaoxiao.top/tags/Logstach/">Logstach</category>
+      
+      
+      <comments>https://blog.qiaoxiao.top/posts/61e754df14c5.html#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>键入网址到网页显示过程</title>

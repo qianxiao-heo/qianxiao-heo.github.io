@@ -1,12 +1,1 @@
-window.onload=function(){
-    document.body.classList.add("video-show");
-}
-window.addEventListener("scroll", function (e) {
-    var t = document.documentElement.scrollTop || document.body.scrollTop;
-    if (t < 100) {
-        this.document.body.classList.add("video-show");
-    }
-    else {
-        this.document.body.classList.remove("video-show");
-    }
-})
+window.onload=function(){document.body.classList.add("video-show")},window.addEventListener("scroll",(function(o){(document.documentElement.scrollTop||document.body.scrollTop)<100?this.document.body.classList.add("video-show"):this.document.body.classList.remove("video-show")}));
